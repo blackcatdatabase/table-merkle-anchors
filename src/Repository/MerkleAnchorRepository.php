@@ -592,16 +592,16 @@ use OrderByTools, PkTools, RepositoryHelpers;
     // === Generated unique helpers (per table UNIQUE/PK) ===
     
     /** @return array<string,mixed>|\BlackCat\Database\Packages\MerkleAnchors\Dto\MerkleAnchorDto|null */
-    public function getByAnchorRefAndAnchorTypeAndMerkleRootId(string $anchorRef, string $anchorType, int $merkleRootId, bool $asDto = false): array|\BlackCat\Database\Packages\MerkleAnchors\Dto\MerkleAnchorDto|null {
-        return $this->getByUnique([ 'anchor_ref' => $anchorRef, 'anchor_type' => $anchorType, 'merkle_root_id' => $merkleRootId ], $asDto);
+    public function getByMerkleRootIdAndAnchorTypeAndAnchorRef(int $merkleRootId, string $anchorType, string $anchorRef, bool $asDto = false): array|\BlackCat\Database\Packages\MerkleAnchors\Dto\MerkleAnchorDto|null {
+        return $this->getByUnique([ 'merkle_root_id' => $merkleRootId, 'anchor_type' => $anchorType, 'anchor_ref' => $anchorRef ], $asDto);
     }
-    public function existsByAnchorRefAndAnchorTypeAndMerkleRootId(string $anchorRef, string $anchorType, int $merkleRootId): bool {
-        $where = 't.' . Ident::q($this->db, 'anchor_ref') . ' = :uniq_anchor_ref' . ' AND ' . 't.' . Ident::q($this->db, 'anchor_type') . ' = :uniq_anchor_type' . ' AND ' . 't.' . Ident::q($this->db, 'merkle_root_id') . ' = :uniq_merkle_root_id';
-        return $this->exists($where, [ 'uniq_anchor_ref' => $anchorRef, 'uniq_anchor_type' => $anchorType, 'uniq_merkle_root_id' => $merkleRootId ]);
+    public function existsByMerkleRootIdAndAnchorTypeAndAnchorRef(int $merkleRootId, string $anchorType, string $anchorRef): bool {
+        $where = 't.' . Ident::q($this->db, 'merkle_root_id') . ' = :uniq_merkle_root_id' . ' AND ' . 't.' . Ident::q($this->db, 'anchor_type') . ' = :uniq_anchor_type' . ' AND ' . 't.' . Ident::q($this->db, 'anchor_ref') . ' = :uniq_anchor_ref';
+        return $this->exists($where, [ 'uniq_merkle_root_id' => $merkleRootId, 'uniq_anchor_type' => $anchorType, 'uniq_anchor_ref' => $anchorRef ]);
     }
     /** @return int|string|null */
-    public function getIdByAnchorRefAndAnchorTypeAndMerkleRootId(string $anchorRef, string $anchorType, int $merkleRootId) {
-        $row = $this->getByAnchorRefAndAnchorTypeAndMerkleRootId($anchorRef, $anchorType, $merkleRootId, false);
+    public function getIdByMerkleRootIdAndAnchorTypeAndAnchorRef(int $merkleRootId, string $anchorType, string $anchorRef) {
+        $row = $this->getByMerkleRootIdAndAnchorTypeAndAnchorRef($merkleRootId, $anchorType, $anchorRef, false);
         if (!is_array($row)) { return null; }
         return $row['id'] ?? null;
     }

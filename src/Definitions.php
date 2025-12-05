@@ -57,7 +57,7 @@ final class Definitions {
     }
 
     /** @return array<int,array<int,string>> list of unique keys */
-    public static function uniqueKeys(): array { return [ [ 'anchor_ref', 'anchor_type', 'merkle_root_id' ], [ 'id' ] ]; }
+    public static function uniqueKeys(): array { return [ [ 'merkle_root_id', 'anchor_type', 'anchor_ref' ], [ 'id' ] ]; }
 
     /** @return string[] JSON columns for casts/operations */
     public static function jsonColumns(): array { return [ 'meta' ]; }
