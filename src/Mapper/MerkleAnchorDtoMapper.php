@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class MerkleAnchorDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'merkle_root_id' => 'merkleRootId', 'anchor_type' => 'anchorType', 'anchor_ref' => 'anchorRef', 'anchored_at' => 'anchoredAt' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'merkle_root_id' => 'merkleRootId', 'anchor_type' => 'anchorType', 'anchor_ref' => 'anchorRef', 'anchored_at' => 'anchoredAt', 'meta' => 'meta' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [];
@@ -39,13 +39,8 @@ final class MerkleAnchorDtoMapper
 
     private static function tz(): DateTimeZone
     {
-        if (self::$tzObj instanceof DateTimeZone) {
-            return self::$tzObj;
-        }
-        try {
+        if (!(self::$tzObj instanceof DateTimeZone)) {
             self::$tzObj = new DateTimeZone(self::TZ);
-        } catch (\Throwable) {
-            self::$tzObj = new DateTimeZone('UTC');
         }
         return self::$tzObj;
     }
