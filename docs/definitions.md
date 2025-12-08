@@ -5,12 +5,12 @@ Anchors proving Merkle roots in external systems (files, blockchain, etc.).
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| anchor_ref |  | NO |  | Reference or locator for the anchor. |
-| anchor_type | TEXT | NO |  | Anchor medium. (enum: file, blockchain, notary) |
-| anchored_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the anchor was created. |
+| anchor_ref | VARCHAR(512) | NO |  | Reference or locator for the anchor. |
+| anchor_type | ENUM('file','blockchain','notary') | NO |  | Anchor medium. (enum: file, blockchain, notary) |
+| anchored_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | When the anchor was created. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | merkle_root_id | BIGINT | NO |  | Referenced Merkle root (FK merkle_roots.id). |
-| meta | JSONB | YES |  | JSON metadata tied to the anchor. |
+| meta | JSON | YES |  | JSON metadata tied to the anchor. |
 
 ## Engine Details
 
@@ -55,5 +55,5 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_merkle_anchors | mysql | algorithm=MERGE, security=INVOKER | [packages\merkle-anchors\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/merkle-anchors/schema/040_views.mysql.sql) |
-| vw_merkle_anchors | postgres |  | [packages\merkle-anchors\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/merkle-anchors/schema/040_views.postgres.sql) |
+| vw_merkle_anchors | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_merkle_anchors | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
