@@ -6,11 +6,11 @@ Anchors proving Merkle roots in external systems (files, blockchain, etc.).
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
 | anchor_ref | VARCHAR(512) | NO |  | Reference or locator for the anchor. |
-| anchor_type | ENUM('file','blockchain','notary') | NO |  | Anchor medium. (enum: file, blockchain, notary) |
-| anchored_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | When the anchor was created. |
+| anchor_type | mysql: ENUM('file','blockchain','notary') / postgres: TEXT | NO |  | Anchor medium. (enum: file, blockchain, notary) |
+| anchored_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the anchor was created. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | merkle_root_id | BIGINT | NO |  | Referenced Merkle root (FK merkle_roots.id). |
-| meta | JSON | YES |  | JSON metadata tied to the anchor. |
+| meta | mysql: JSON / postgres: JSONB | YES |  | JSON metadata tied to the anchor. |
 
 ## Engine Details
 
