@@ -96,8 +96,8 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `anchored_at` – default=CURRENT_TIMESTAMP(6)
 - `anchor_type` – enum
+- `anchored_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
