@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'anchor_ref' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'merkle_root_id', 'anchor_type', 'anchor_ref', 'anchored_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'merkle_root_id', 'anchor_type', 'anchor_ref', 'anchored_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
