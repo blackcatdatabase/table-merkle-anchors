@@ -1,0 +1,26 @@
+{
+  "tables": {
+    "merkle_anchors": {
+      "columns": {
+        "anchor_ref": {
+          "strategy": "passthrough"
+        },
+        "anchor_type": {
+          "strategy": "passthrough"
+        },
+        "anchored_at": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "merkle_root_id": {
+          "strategy": "passthrough"
+        },
+        "meta": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
